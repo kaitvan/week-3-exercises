@@ -19,9 +19,28 @@ namespace Week_3_Exercises
         public void Create()
         {
             Console.Write("Enter this team member's skill level: ");
-            SkillLevel = Math.Round(Convert.ToDouble(Console.ReadLine()));
+
+            try
+            {
+                SkillLevel = Math.Round(Convert.ToDouble(Console.ReadLine()));
+            }
+            catch (FormatException)
+            {
+                Console.Write("ERROR--Enter a number for this team member's skill level: ");
+                SkillLevel = Math.Round(Convert.ToDouble(Console.ReadLine()));
+            }
+
             Console.Write("Enter this team member's courage factor: ");
-            CourageFactor = Convert.ToDouble(Console.ReadLine());
+
+            try
+            {
+                CourageFactor = Math.Round(Convert.ToDouble(Console.ReadLine()));
+            }
+            catch (FormatException)
+            {
+                Console.Write("ERROR--Enter a decimal between 0 and 2 for this team member's courage factor: ");
+                CourageFactor = Math.Round(Convert.ToDouble(Console.ReadLine()));
+            }
 
             if (CourageFactor < 0)
             {
@@ -35,10 +54,7 @@ namespace Week_3_Exercises
 
         public void Display()
         {
-            Console.WriteLine("***Team Member Information***");
-            Console.WriteLine($"Team Member: {Name}");
-            Console.WriteLine($"Skill Level: {SkillLevel}");
-            Console.WriteLine($"Courage Factor: {CourageFactor}");
+            Console.Write($"\n***Team Member Information***\nTeam Member: {Name}\nSkill Level: {SkillLevel}\nCourage Factor: {CourageFactor}\n");
         }
     }
 }
